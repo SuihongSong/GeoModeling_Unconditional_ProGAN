@@ -1,4 +1,4 @@
-Code for this project is improved from the original code of Progressive GANs (https://github.com/tkarras/progressive_growing_of_gans). We thank the authors for their great job. This repository goes with paper titled "Geological Facies Modeling Based on Progressive Growing of Generative Adversarial Networks (GANs)" by Suihong Song, Tapan Mukerji, and Jiagen Hou. This repository includes 3 big folders: "Training data", "Code", and "Results of trained generators".
+Code for this project is improved from the original code of Progressive GANs (https://github.com/tkarras/progressive_growing_of_gans). We thank the authors for their great job. This repository goes with paper titled "Geological Facies Modeling Based on Progressive Growing of Generative Adversarial Networks (GANs)" by Suihong Song, Tapan Mukerji, and Jiagen Hou. This repository includes 3 big folders: "Trainingdata" (in the form of .7z), "Code", and "TrainingResults" (in the form of .7z).
 
 ################################################################
 
