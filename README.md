@@ -7,6 +7,7 @@ Training
 Download “Training data” and “Code” folders.
 Before start training GANs, set paths and other hyperparameters in “config.py” file. If using conventional GAN training process, uncomment the line of code (“#desc += '-nogrowing' …”) in “config.py” file.
 Run code in “Run Code.ipynb” file.
+
 ###############################################################
 
 Assessment of the trained generator during or after training
