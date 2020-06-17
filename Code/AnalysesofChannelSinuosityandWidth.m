@@ -9,7 +9,7 @@ endpoints = zeros(facies_no, 2);
 reallengths = zeros(facies_no,1);
 widths = zeros(facies_no,1);
 
-for i =58: facies_no
+for i =1: facies_no
     i
     facies = allfacies(:,:, i);
     facies =  imbinarize(facies);
