@@ -1,3 +1,6 @@
+*** Since Github does not allow large files to be downloaded, such as "Trainingdata" and "TrainingResults", thus we also upload all the data (codes, training data and training results) into Zenodo https://zenodo.org/record/3993800#.Xz8P-shKhaQ.
+
+
 Code for this project is improved from the original code of Progressive GANs (https://github.com/tkarras/progressive_growing_of_gans). We thank the authors for their great job. This repository goes with paper titled "Geological Facies Modeling Based on Progressive Growing of Generative Adversarial Networks (GANs)" by Suihong Song, Tapan Mukerji, and Jiagen Hou. This repository includes 3 big folders: "Trainingdata" (in the form of .7z), "Code", and "TrainingResults" (in the form of .7z).
 
 ################################################################
