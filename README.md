@@ -97,7 +97,7 @@ Second, if try with our trained generators, please modify “data_dir” and “
 
 Finally, run code in [RunCode.ipynb](./Code/RunCode.ipynb) file. 
 
-(3) Variograms: see [Variogram Ploting.ipynb](./Code/Variogram Ploting.ipynb). 
+(3) Variograms: see [Variogram_Ploting.ipynb](./Code/Variogram_Ploting.ipynb). 
 
 (4) Statistics for channel sinuosity and width: run matlab code [AnalysesofChannelSinuosityandWidth.m](./Code/AnalysesofChannelSinuosityandWidth.m) to calculate channel sinuosity and channel width for each facies model. When running the code, every time when one facies model pops up, select one channel that is representative of the facies model, and double click the channel, then it will pop up next facies model. During this process, “endpoints”, “startpoints”, “reallengths” (arclength), and “widths” (half width) can be calculated, thus the sinuosity (arclength/straight-line length) and width of double-clicked channels can be calculated.
 
