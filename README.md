@@ -11,7 +11,8 @@ This repository contains the official TensorFlow implementation of the following
 
 > **Geological Facies Modeling Based on Progressive Growing of Generative Adversarial Networks (GANs)**<br>
 > Suihong Song (CUPB & Stanford), Tapan Mukerji (Stanford), and Jiagen Hou (CUPB)<br>
-> CUPB refers: China University of Petroleum - Beijing
+> CUPB: China University of Petroleum - Beijing
+
 > https://eartharxiv.org/ycufs/
 >
 > **Abstract:** *Geological facies modeling has long been studied to predict subsurface resources. In recent years, generative adversarial networks (GANs) have been used as a new method for geological facies modeling with surprisingly good results. However, in conventional GANs, all layers are trained concurrently, and the scales of the geological features are not considered. In this study, we propose to train GANs for facies modeling based on a new training process, namely progressive growing of GANs or a progressive training process. In the progressive training process, GANs are trained layer by layer, and geological features are learned from coarse scales to fine scales. We also train a GAN in the conventional training process, and compare the conventionally trained generator with the progressively trained generator based on visual inspection, multi-scale sliced Wasserstein distance (MS-SWD), multi-dimensional scaling (MDS) plot visualization, facies proportion, variogram, and channel sinuosity and width metrics. The MS-SWD reveals realism and diversity of the generated facies models, and is combined with MDS to visualize the relationship between the distributions of the generated and training facies models. The conventionally and progressively trained generators both have very good performances on all metrics. The progressively trained generator behaves especially better than the conventionally trained generator on the MS-SWD, MDS plots, and the facies proportion metrics. The training time for the progressively trained generator is much less (39.2%) than that for the conventionally trained generator. This study demonstrates the superiority of the progressive training process over the conventional one in geological facies modeling, and provides a better option for future GAN-related researches.*
@@ -96,7 +97,7 @@ Second, if try with our trained generators, please modify “data_dir” and “
 
 Finally, run code in [RunCode.ipynb](./Code/RunCode.ipynb) file. 
 
-(3) Variograms: see [VariogramPloting.ipynb](./Code/VariogramPloting.ipynb). 
+(3) Variograms: see [Variogram Ploting.ipynb](./Code/Variogram Ploting.ipynb). 
 
 (4) Statistics for channel sinuosity and width: run matlab code [AnalysesofChannelSinuosityandWidth.m](./Code/AnalysesofChannelSinuosityandWidth.m) to calculate channel sinuosity and channel width for each facies model. When running the code, every time when one facies model pops up, select one channel that is representative of the facies model, and double click the channel, then it will pop up next facies model. During this process, “endpoints”, “startpoints”, “reallengths” (arclength), and “widths” (half width) can be calculated, thus the sinuosity (arclength/straight-line length) and width of double-clicked channels can be calculated.
 
