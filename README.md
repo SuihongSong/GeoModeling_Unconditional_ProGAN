@@ -19,6 +19,12 @@ This repository contains the official TensorFlow implementation of the following
 
 For any question, please contact [songsuihong@126.com]<br>
 
+![Teaser image](./Basic_workflow_of_GAN.png) 
+**Picture:** *Basic workflow of GANs for facies modeling.*
+
+![Teaser image](./GAN_architecture_with_progressive_training.png) 
+**Picture:** *GAN architecture used in this study; GAN is trained block (of layers) by block with progressively enlarging training facies models.*
+
 ## Resources
 
 Material related to our paper is available via the following links:
