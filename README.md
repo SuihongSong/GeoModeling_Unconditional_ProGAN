@@ -70,30 +70,35 @@ The input of generator contains latent vectors with 128 dimension and labels wit
 
 ## Training dataset
 
-The training dataset (training facies models) is stored as multi-resolution TFRecords. Each original facies model (64x64) is downsampled into multiple resolutions (32x32, …, 4x4) and stored in \*.tfrecords files for efficient streaming during training. There is a separate \*.tfrecords file for each resolution. The training dataset also includes a label file (\*.labels), but this file actually not used in this unconditional facies modeling case. 
+The training dataset (training facies models) is stored as multi-resolution TFRecords. Each original facies model (64x64) is downsampled into multiple resolutions (32x32, …, 4x4) and stored in \*.tfrecords files for efficient streaming during training. There is a separate \*.tfrecords file for each resolution. The training dataset also includes a label file (\*.labels), but this file is actually not used in this unconditional facies modeling case. 
 
 ## Training networks
 
-Once the datasets are downloaded, you can train your own facies model generators as follows:
+Once the training dataset and related codes are downloaded, you can train your own facies model generators as follows:
 
-1. Edit [config.py](./Code/config.py) to set paths for downloaded training data and expected result data, and other hyperparameters like gpu number. If using conventional GAN training process, uncomment the line of code: 
+1. Edit [config.py](./Code/config.py) to set path for the downloaded training data and path for expected results, and other hyperparameters like gpu number. If using conventional GAN training process, uncomment the line of code: 
 ```
 #desc += '-nogrowing'; sched.lod_initial_resolution = 64; train.total_kimg = 10000
 ```
-2. Set default path as the directory path of downloaded code files, and run the training script with `python train.py`. Or, edit path in [Run Code.ipynb] (./Code/Run Code.ipynb), and run “% run train.py” with Jupyter notebook.
+2. Edit [train.py](./Code/train.py) to set detailed parameters of training, such as parameters in `class TrainingSchedule` and `def train_progressive_gan`.
+
+3. Set default path as the directory path of downloaded code files, and run the training script with `python train.py`. Or, edit path in [RunCode.ipynb](./Code/RunCode.ipynb), and run `% run train.py` in [RunCode.ipynb](./Code/RunCode.ipynb) with Jupyter notebook.
 
 ## Assessment of the trained generator during or after training
 
-(1) Visual assessment by randomly plotting facies models produced from trained generators and from training dataset: see [pretrained_example.ipynb](./Code/pretrained_example.ipynb).
+(1) Visual assessment by comparing randomly generated facies models with training facies models: see [pretrained_example.ipynb](./Code/pretrained_example.ipynb).
 
 (2) To calculate multi-scale sliced Wasserstein distance (MS-SWD) values for different networks during training, distribution of facies models in MDS plot based on MS-SWD for different networks during training, or comparison of facies models produced by conventionally and progressively trained generators against training facies models at the same MDS plot:
+
 First, uncomment corresponding line of code in the last code block in [config.py](./Code/config.py). 
+
 Second, if try with our trained generators, please modify “data_dir” and “result_dir” parameters in downloaded “config.txt” (Zenodo https://zenodo.org/record/3993800#.Xz8P-shKhaQ). 
-Finally, run code in [Run Code.ipynb](./Code/ Run Code.ipynb) file. 
 
-(3) Variograms: see [Variogram Ploting.ipynb](./Code/Variogram Ploting.ipynb). 
+Finally, run code in [RunCode.ipynb](./Code/RunCode.ipynb) file. 
 
-(4) Channel sinuosity and width: run matlab code [AnalysesofChannelSinuosityandWidth.m](./Code/ AnalysesofChannelSinuosityandWidth.m) to calculate channel sinuosity and channel width for each facies model. When running the code, every time when one facies model pops up, select one channel that is representative of the facies model, and double click the channel, then it will pop up next facies model. During this process, “endpoints”, “startpoints”, “reallengths” (arclength), and “widths” (half width) can be calculated, thus the sinuosity (arclength/straight-line length) and width of double-clicked channels can be calculated.
+(3) Variograms: see [VariogramPloting.ipynb](./Code/VariogramPloting.ipynb). 
+
+(4) Statistics for channel sinuosity and width: run matlab code [AnalysesofChannelSinuosityandWidth.m](./Code/AnalysesofChannelSinuosityandWidth.m) to calculate channel sinuosity and channel width for each facies model. When running the code, every time when one facies model pops up, select one channel that is representative of the facies model, and double click the channel, then it will pop up next facies model. During this process, “endpoints”, “startpoints”, “reallengths” (arclength), and “widths” (half width) can be calculated, thus the sinuosity (arclength/straight-line length) and width of double-clicked channels can be calculated.
 
 Please note that the exact results may vary from run to run due to the non-deterministic nature of TensorFlow.
 
