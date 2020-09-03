@@ -4,7 +4,7 @@
 ![cuDNN 7.4.1](https://img.shields.io/badge/cudnn-7.4.1-green.svg?style=plastic)
 ![License MIT](https://img.shields.io/badge/license-MIT-green.svg?style=plastic)
 
-![Teaser image](./ProgressivelyGeneratedFaciesModels.png)
+![Teaser image](./ProgressivelyGeneratedFaciesModels.png) 
 **Picture:** *These facies models are produced by generator during the progressive training process.*
 
 This repository contains the official TensorFlow implementation of the following paper:
