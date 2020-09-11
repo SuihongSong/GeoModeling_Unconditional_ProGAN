@@ -85,6 +85,57 @@ The input of generator contains latent vectors with 128 dimension and labels wit
 
 The training dataset (training facies models) is stored as multi-resolution TFRecords. Each original facies model (64x64) is downsampled into multiple resolutions (32x32, …, 4x4) and stored in \*.tfrecords files for efficient streaming during training. There is a separate \*.tfrecords file for each resolution. The training dataset also includes a label file (\*.labels), but this file is actually not used in this unconditional facies modeling case. 
 
+### How to make training data as TFRecords?
+
+(1) In our study, we synthesize training facies models using object-based method in Petrel software, and export them into one file as model properties with `"Gslib"` format. An Gslib format example of the exported file is [Format_example_of_simulated_facies_models_from_Petrel.txt](./Code/Format_example_of_simulated_facies_models_from_Petrel.txt).
+
+First lines of the exported file are like:
+
+PETREL: Properties
+
+17820 % Number of synthesized facies models
+
+Facies unit1 scale1
+
+Facies unit1 scale1
+
+...
+
+Facies unit1 scale1
+
+% Totally, there are 64x64 lines, corresponding to 64x64 pixels in each facies model; each line has 17820 numbers splitted by space, corresponding to 17820 facies code values of 17820 generated facies realizations at each pixel. 0-background mud faceis, 1-channel sand facies, 2-channel bank facies.
+
+0.000000 0.000000 0.000000 0.000000 0.000000 0.000000 ... 0.000000 1.000000 2.000000
+
+0.000000 1.000000 0.000000 0.000000 0.000000 0.000000 ... 0.000000 0.000000 0.000000
+
+...
+
+0.000000 0.000000 0.000000 0.000000 0.000000 0.000000 ... 0.000000 0.000000 0.000000
+
+
+(2) This exported file containing synthesized facies models is read in [Preparing_training_and_test_datasets.ipynb](./Code/Preparing_training_and_test_datasets.ipynb). The data in the file is rearranged into `(FaciesModelNumber, 1, 64, 64)`. 
+
+In our study, when synthesizing facies models in Petrel, we only consider orientation of channels varying from 0 to 90 degrees, thus in [Preparing_training_and_test_datasets.ipynb](./Code/Preparing_training_and_test_datasets.ipynb), we further enlarge the facies model dataset by reversing the synthesized facies mdoels vertically whose orientation become from -90 to 0 degrees:
+```
+allimgs = np.concatenate((partimgs, partimgs[::-1,:,:]),2)
+```
+Other software, like SGeMS, can also be used to simulate the training facies models, as long as the final generated facies models are arranged into `(FaciesModelNumber, 1, 64, 64)`.
+
+Global features (also called labels) are arranged into `(FaciesModelNumber, GlobalFeaturesNumber)`.
+
+(3) [Preparing_training_and_test_datasets.ipynb](./Code/Preparing_training_and_test_datasets.ipynb) also includes code on how to generate probability maps and well facies data from synthesized facies models, but these are not needed in this case of unconditional facies modeling. Thus, readers can skip these parts of codes, and just `1 Write paths`, `2 Load facies models`, `5 Load labels (Global features)`, and `6 Generate training and test datasets`. In `6 Generate training and test datasets`, as test dataset is not needed either, readers can just set all facies models as training dataset, and only write training dataset as TFrecords:
+```
+randseq=np.random.RandomState(232).permutation(allimgs.shape[0])
+allimgs_training = allimgs[randseq]
+labels_cor_training = labels_cor[randseq]
+with TFRecordExporter(tfrecord_dir_training, allimgs_training.shape[0]) as tfr:
+    order = tfr.choose_shuffled_order()
+    for idx in range(order.size):
+        tfr.add_real_image(allimgs_training[order[idx]])
+    tfr.add_labels(labels_cor_training[order])    
+```
+
 ## Training networks
 
 Once the training dataset and related codes are downloaded, you can train your own facies model generators as follows:
