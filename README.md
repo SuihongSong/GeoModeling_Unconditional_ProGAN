@@ -136,6 +136,19 @@ with TFRecordExporter(tfrecord_dir_training, allimgs_training.shape[0]) as tfr:
     tfr.add_labels(labels_cor_training[order])    
 ```
 
+(4) When downsampling training facies models, two methods were proposed currently: averaging facies codes, or remaining the most frequent facies code. In this paper, here we use the averaging facies codes. In the near future, we will propose to use a third downsampling method: averaging indicator of each facies. 
+
+```
+# used to produce low-D with most frequent facies code
+#real_img_t = np.expand_dims(real_img, axis = 3)
+#real_img_t_c = np.concatenate((real_img_t[:, 0::2, 0::2], real_img_t[:, 0::2, 1::2], real_img_t[:, 1::2, 0::2], real_img_t[:, 1::2, 1::2]), axis = 3)                
+#mode, _ = stats.mode(real_img_t_c, axis = 3)
+#real_img = np.squeeze(mode, axis = 3)
+                
+# used to produce low-D with averaging method
+real_img = (real_img[:, 0::2, 0::2] + real_img[:, 0::2, 1::2] + real_img[:, 1::2, 0::2] + real_img[:, 1::2, 1::2]) * 0.25  
+```
+
 ## Training networks
 
 Once the training dataset and related codes are downloaded, you can train your own facies model generators as follows:
