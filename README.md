@@ -91,27 +91,27 @@ The training dataset (training facies models) is stored as multi-resolution TFRe
 
 First lines of the exported file are like:
 
-PETREL: Properties
-
-17820 % Number of synthesized facies models
-
-Facies unit1 scale1
-
-Facies unit1 scale1
-
-...
-
-Facies unit1 scale1
-
-% Totally, there are 64x64 lines, corresponding to 64x64 pixels in each facies model; each line has 17820 numbers splitted by space, corresponding to 17820 facies code values of 17820 generated facies realizations at each pixel. 0-background mud faceis, 1-channel sand facies, 2-channel bank facies.
-
-0.000000 0.000000 0.000000 0.000000 0.000000 0.000000 ... 0.000000 1.000000 2.000000
-
-0.000000 1.000000 0.000000 0.000000 0.000000 0.000000 ... 0.000000 0.000000 0.000000
-
-...
-
-0.000000 0.000000 0.000000 0.000000 0.000000 0.000000 ... 0.000000 0.000000 0.000000
+>PETREL: Properties
+>
+>17820 % Number of synthesized facies models
+>
+>Facies unit1 scale1
+>
+>Facies unit1 scale1
+>
+>...
+>
+>Facies unit1 scale1
+>
+>% Totally, there are 64x64 lines, corresponding to 64x64 pixels in each facies model; each line has 17820 numbers splitted by space, corresponding to 17820 facies code values of 17820 generated facies realizations at each pixel. 0-background mud faceis, 1-channel sand facies, 2-channel bank facies.
+>
+>0.000000 0.000000 0.000000 0.000000 0.000000 0.000000 ... 0.000000 1.000000 2.000000
+>
+>0.000000 1.000000 0.000000 0.000000 0.000000 0.000000 ... 0.000000 0.000000 0.000000
+>
+>...
+>
+>0.000000 0.000000 0.000000 0.000000 0.000000 0.000000 ... 0.000000 0.000000 0.000000
 
 
 (2) This exported file containing synthesized facies models is read in [Preparing_training_and_test_datasets.ipynb](./Code/Preparing_training_and_test_datasets.ipynb). The data in the file is rearranged into `(FaciesModelNumber, 1, 64, 64)`. 
