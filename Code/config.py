@@ -12,6 +12,9 @@ class EasyDict(dict):
 # Paths.
 
 data_dir = '/scratch/users/suihong/training_data/'  # Training data path
+# "data_dir" refers to the path of grandparent directory of training dataset like *.tfrecord files. "dataset" in line 46 refers to parent folder name of training dataset.
+# e.g., folder "AA/BB/CC" includes all the *.tfrecord files training dataset, then data_dir = 'AA/BB/', and in line 46, tfrecord_dir=  'CC'. 
+
 result_dir = '/scratch/users/suihong/ProGAN_MultiChannel_Reusults_ConditionedtoMultiConditions_TF/'  # result data path
 
 #----------------------------------------------------------------------------
@@ -40,7 +43,7 @@ D_loss      = EasyDict(func='loss.D_wgangp_acgan')          # Options for discri
 sched       = EasyDict()                                    # Options for train.TrainingSchedule.
 grid        = EasyDict(size='6by8')                         # Options for train.setup_snapshot_image_grid().
 
-dataset = EasyDict(tfrecord_dir= 'TrainingData(MultiChannels_Version4)')
+dataset = EasyDict(tfrecord_dir= 'TrainingData(MultiChannels_Version4)')   #Replace 'TrainingData(MultiChannels_Version4)' with parent folder name of *.tfrecords training dataset.  
 
 desc += '-2gpu'; num_gpus = 2; sched.minibatch_base = 32; sched.minibatch_dict = {4: 32, 8: 32, 16: 32, 32: 32, 64: 32}; sched.G_lrate_dict = {4: 0.0025, 8: 0.005, 16: 0.005, 32: 0.0035, 64: 0.0025}; sched.D_lrate_dict = EasyDict(sched.G_lrate_dict); train.total_kimg = 60000
 sched.max_minibatch_per_gpu = {32: 32, 64: 32}
