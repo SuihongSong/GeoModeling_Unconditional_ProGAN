@@ -9,11 +9,11 @@
 
 This repository contains the official TensorFlow implementation of the following paper:
 
-> **Geological Facies Modeling Based on Progressive Growing of Generative Adversarial Networks (GANs)**<br>
+> **Geological Facies modeling based on progressive growing of generative adversarial networks (GANs)**<br>
 > Suihong Song (CUPB & Stanford), Tapan Mukerji (Stanford), and Jiagen Hou (CUPB)<br>
 > CUPB: China University of Petroleum - Beijing
 
-> https://eartharxiv.org/ycufs/
+> https://link.springer.com/article/10.1007/s10596-021-10059-w
 >
 > **Abstract:** *Geological facies modeling has long been studied to predict subsurface resources. In recent years, generative adversarial networks (GANs) have been used as a new method for geological facies modeling with surprisingly good results. However, in conventional GANs, all layers are trained concurrently, and the scales of the geological features are not considered. In this study, we propose to train GANs for facies modeling based on a new training process, namely progressive growing of GANs or a progressive training process. In the progressive training process, GANs are trained layer by layer, and geological features are learned from coarse scales to fine scales. We also train a GAN in the conventional training process, and compare the conventionally trained generator with the progressively trained generator based on visual inspection, multi-scale sliced Wasserstein distance (MS-SWD), multi-dimensional scaling (MDS) plot visualization, facies proportion, variogram, and channel sinuosity and width metrics. The MS-SWD reveals realism and diversity of the generated facies models, and is combined with MDS to visualize the relationship between the distributions of the generated and training facies models. The conventionally and progressively trained generators both have very good performances on all metrics. The progressively trained generator behaves especially better than the conventionally trained generator on the MS-SWD, MDS plots, and the facies proportion metrics. The training time for the progressively trained generator is much less (39.2%) than that for the conventionally trained generator. This study demonstrates the superiority of the progressive training process over the conventional one in geological facies modeling, and provides a better option for future GAN-related researches.*
 
@@ -35,7 +35,7 @@ For any question, please contact [songsuihong@126.com]<br>
 
 Material related to our paper is available via the following links:
 
-- Paper: https://eartharxiv.org/ycufs/
+- Paper: https://link.springer.com/article/10.1007/s10596-021-10059-w
 - Code: (Github) https://github.com/SuihongSong/GeoModeling_Conditional_ProGAN
 - Training dataset: (Zenodo) https://zenodo.org/record/3993800#.X1BwqchKhaR
 - Pre-trained GANs: (Zenodo) https://zenodo.org/record/3993800#.X1BwqchKhaR, or (Google Drive) conventional generator: https://drive.google.com/file/d/1eAolkBKhVCXdkviXkL6BTdYJujXUj8iP/view?usp=sharing; progressive generator: https://drive.google.com/file/d/1jfWFEC1TDrtWbYrJvCkz_nPbcVanKVF6/view?usp=sharing) 
