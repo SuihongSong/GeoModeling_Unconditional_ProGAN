@@ -2,7 +2,6 @@
 ![Python 3.6](https://img.shields.io/badge/python-3.6-green.svg?style=plastic)
 ![TensorFlow 1.12](https://img.shields.io/badge/tensorflow-1.12-green.svg?style=plastic)
 ![cuDNN 7.4.1](https://img.shields.io/badge/cudnn-7.4.1-green.svg?style=plastic)
-![License MIT](https://img.shields.io/badge/license-MIT-green.svg?style=plastic)
 
 ![Teaser image](./ProgressivelyGeneratedFaciesModels.png) 
 **Picture:** *These facies models are produced by generator during the progressive training process.*
@@ -178,6 +177,12 @@ Finally, run code in [RunCode.ipynb](./Code/RunCode.ipynb) file.
 (4) Statistics for channel sinuosity and width: run matlab code [AnalysesofChannelSinuosityandWidth.m](./Code/AnalysesofChannelSinuosityandWidth.m) to calculate channel sinuosity and channel width for each facies model. When running the code, every time when one facies model pops up, select one channel that is representative of the facies model, and double click the channel, then it will pop up next facies model. During this process, “endpoints”, “startpoints”, “reallengths” (arclength), and “widths” (half width) can be calculated, thus the sinuosity (arclength/straight-line length) and width of double-clicked channels can be calculated.
 
 Please note that the exact results may vary from run to run due to the non-deterministic nature of TensorFlow.
+
+
+## Licenses
+
+Most code files (especailly networks.py and loss.py) of this study are derived from the original Progressive GANs work (https://github.com/tkarras/progressive_growing_of_gans). Their work is under license of Attribution-NonCommercial 4.0 International (https://creativecommons.org/licenses/by-nc/4.0/). The parts of code we added/adjusted are under MIT license.
+
 
 ## Acknowledgements
 
